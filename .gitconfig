@@ -16,7 +16,10 @@
   l = log --oneline --graph --decorate
   lg = log -p
   # Uncommit last commit (move to staged)
-  uncommit = reset HEAD^
+  uncommit = reset --soft HEAD^
+  # Ignore changes to tracked file
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
 [core]
   excludesfile = ~/.gitignore_global
   pager = less -R
