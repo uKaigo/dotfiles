@@ -1,0 +1,3 @@
+[submodule "pulseaudio-config"]
+	path = pulseaudio-config
+	url = https://github.com/toadjaune/pulseaudio-config
