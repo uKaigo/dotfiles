@@ -37,8 +37,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"  # If `pyenv` is not already on PATH
-eval "$(pyenv init --path)" 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
+if [ -d $PYENV_ROOT ]; then
+  export PATH="$PYENV_ROOT/bin:$PATH"  # If `pyenv` is not already on PATH
+  eval "$(pyenv init --path)" 
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
