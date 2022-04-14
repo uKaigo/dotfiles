@@ -31,11 +31,11 @@ load_plugin "uKaigo/zsh-plugins" "zsh-plugins.plugin.zsh"
 # Load vi keys settings (needs to be here because zsh-plugins overwrites it)
 source $ZDOTDIR/vikeys.zsh
 
-# NVM setup
+# Load NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Pyenv setup
+# Load Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT ]; then
   export PATH="$PYENV_ROOT/bin:$PATH"  # If `pyenv` is not already on PATH
@@ -43,3 +43,9 @@ if [ -d $PYENV_ROOT ]; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+
+# Add cargo to PATH
+[ -s $HOME/.cargo/env ] && source $HOME/.cargo/env
+
+# Load command-not-found handler
+[ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
