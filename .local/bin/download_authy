@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Utility to download and extract Authy from Snap.
 # Git is required for version management.
 
@@ -11,16 +11,47 @@ OLD_VERSION=""
 TEMPFILE=$(mktemp -p /tmp authy.XXXXXX)
 TEMPFOLDER=$(mktemp -d -p /tmp authy.XXXXXX)
 
+get_version () {
+  # If git is installed, use it. Otherwise, fallback to file.
+  [ ! -d "$HOME/.authy" ] && return
+
+  _ver=""
+  if command -v git; then
+    cd "$HOME/.authy" || return
+    _ver=$(git describe --tags)
+  else
+    _ver=$(cat "$HOME/.authy/.version")
+  fi
+
+  echo "$_ver"
+}
+
+set_version () {
+  # If git is installed, use it. Otherwise, fallback to file.
+  [ ! -d "$HOME/.authy" ] && return
+
+  if command -v git; then
+    cd "$HOME/.authy" || return
+    git init
+    git checkout -b main
+    git add .
+    git commit -m "$VERSION"
+    git tag "$VERSION"
+  else
+    echo "$VERSION" >> "$HOME/.authy/.version"
+  fi
+}
+
 check_version () {
-  VERSION=$(curl -s "https://api.snapcraft.io/v2/snaps/info/authy?fields=version" -H 'Snap-Device-Series: 16' | jq -r '.["channel-map"][0]["version"]')
-  if [ -z $VERSION ]
+  VERSION=$(curl -s "https://api.snapcraft.io/v2/snaps/info/authy?fields=version" -H "Snap-Device-Series: 16" | jq -r '.["channel-map"][0]["version"]')
+  if [ -z "$VERSION" ]
   then
-    echo Couldn\'t determine upstream version! Exitting.
+    echo "Couldn't determine upstream version! Exitting."
     exit 1
   fi
-  OLD_VERSION=$([ -d $HOME/.authy/ ] && cd $HOME/.authy && git describe --tags)
+  OLD_VERSION=$(get_version)
 
-  if dpkg --compare-versions $VERSION le $OLD_VERSION 2>/dev/null
+  if dpkg --compare-versions "$VERSION" le "$OLD_VERSION" 2>/dev/null
   then
     echo Looks like Authy is already updated. Exitting.
     exit 0
@@ -28,18 +59,19 @@ check_version () {
 }
 
 download () {
-  echo Downloading Authy v$VERSION...
-  wget -q -O $TEMPFILE --show-progress "https://api.snapcraft.io/api/v1/snaps/download/${SNAPID}_${SNAPREV}.snap" 
+  echo "Downloading Authy v$VERSION..."
+  wget -q -O "$TEMPFILE" --show-progress "https://api.snapcraft.io/api/v1/snaps/download/${SNAPID}_${SNAPREV}.snap" 
 }
 
 extract () {
-  echo Extracting...
-  unsquashfs -q -f -d $TEMPFOLDER $TEMPFILE
+  echo "Extracting..."
+  unsquashfs -q -f -d "$TEMPFOLDER" "$TEMPFILE"
 }
 
 install () {
-  echo Installing...
+  echo "Installing..."
 
+  # shellcheck disable=SC2016
   sed -i 's|${SNAP}/meta/gui/icon.png|authy|g' "${TEMPFOLDER:?}/meta/gui/authy.desktop"
 
   echo Enter your password to continue:
@@ -50,17 +82,12 @@ install () {
   sudo mv -u "${TEMPFOLDER:?}/meta/gui/icon.png" "/usr/share/pixmaps/authy.png"
 
   # Remove unecessary files
-  rm -rf ${TEMPFOLDER:?}/{data-dir,gnome-platform,lib,meta,scripts,usr,*.sh}
-  
+  cd "$TEMPFOLDER" || exit 1
+  rm -rf ./data-dir ./gnome-platform ./lib ./meta ./scripts ./usr ./*.sh
+
   # Move folder to install location
-  rsync -a "${TEMPFOLDER:?}/" $HOME/.authy
-  cd $HOME/.authy || exit
-  git init
-  git checkout -b main
-  git add .
-  git commit -am $VERSION
-  git tag $VERSION
-  # echo $VERSION > "$HOME/.authy/.version"
+  rsync -a "${TEMPFOLDER:?}/" "$HOME/.authy"
+  set_version "$VERSION"
 
   # Symlink binary
   sudo ln -fs "$HOME/.authy/authy" "/usr/bin/"
@@ -69,9 +96,9 @@ install () {
 post_install () {
   if [ -z "$OLD_VERSION" ]
   then
-    echo Successfully installed Authy v$VERSION!
+    echo "Successfully installed Authy v$VERSION!"
   else
-    echo Successfully updated Authy from v$OLD_VERSION to v$VERSION!
+    echo "Successfully updated Authy from v$OLD_VERSION to v$VERSION!"
   fi
 }
 
