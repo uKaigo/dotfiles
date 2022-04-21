@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Set default prompt.
-PROMPT="%F{cyan}%n%f@%F{cyan}%m%f %B%F{green}%~%f%b %# "
-RPROMPT="%F{cyan}%*%f"
+PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%# "
+RPROMPT="%F{magenta}%*%f"
 
 # Enable Powerlevel10k instant prompt, if not on tty.
 if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
