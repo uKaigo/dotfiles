@@ -37,6 +37,7 @@ set_version () {
     git add .
     git commit -m "$VERSION"
     git tag "$VERSION"
+    git checkout "$VERSION" -q
   else
     echo "$VERSION" >> "$HOME/.authy/.version"
   fi
