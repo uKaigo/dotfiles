@@ -11,7 +11,7 @@ OLD_VERSION=""
 TEMPFILE=$(mktemp -p /tmp authy.XXXXXX)
 TEMPFOLDER=$(mktemp -d -p /tmp authy.XXXXXX)
 
-get_version () {
+get_version()  {
   # If git is installed, use it. Otherwise, fallback to file.
   [ ! -d "$HOME/.authy" ] && return
 
@@ -26,7 +26,7 @@ get_version () {
   echo "$_ver"
 }
 
-set_version () {
+set_version()  {
   # If git is installed, use it. Otherwise, fallback to file.
   [ ! -d "$HOME/.authy" ] && return
 
@@ -43,33 +43,31 @@ set_version () {
   fi
 }
 
-check_version () {
+check_version()  {
   VERSION=$(curl -s "https://api.snapcraft.io/v2/snaps/info/authy?fields=version" -H "Snap-Device-Series: 16" | jq -r '.["channel-map"][0]["version"]')
-  if [ -z "$VERSION" ]
-  then
+  if [ -z "$VERSION" ]; then
     echo "Couldn't determine upstream version! Exitting."
     exit 1
   fi
   OLD_VERSION=$(get_version)
 
-  if dpkg --compare-versions "$VERSION" le "$OLD_VERSION" 2>/dev/null
-  then
+  if dpkg --compare-versions "$VERSION" le "$OLD_VERSION" 2> /dev/null; then
     echo Looks like Authy is already updated. Exitting.
     exit 0
   fi
 }
 
-download () {
+download()  {
   echo "Downloading Authy v$VERSION..."
-  wget -q -O "$TEMPFILE" --show-progress "https://api.snapcraft.io/api/v1/snaps/download/${SNAPID}_${SNAPREV}.snap" 
+  wget -q -O "$TEMPFILE" --show-progress "https://api.snapcraft.io/api/v1/snaps/download/${SNAPID}_${SNAPREV}.snap"
 }
 
-extract () {
+extract()  {
   echo "Extracting..."
   unsquashfs -q -f -d "$TEMPFOLDER" "$TEMPFILE"
 }
 
-install () {
+install()  {
   echo "Installing..."
 
   # shellcheck disable=SC2016
@@ -77,7 +75,7 @@ install () {
 
   echo Enter your password to continue:
   sudo -k
-  
+
   # Create shortcut and icon
   sudo mv -u "${TEMPFOLDER:?}/meta/gui/authy.desktop" "/usr/share/applications/authy.desktop"
   sudo mv -u "${TEMPFOLDER:?}/meta/gui/icon.png" "/usr/share/pixmaps/authy.png"
@@ -94,9 +92,8 @@ install () {
   sudo ln -fs "$HOME/.authy/authy" "/usr/bin/"
 }
 
-post_install () {
-  if [ -z "$OLD_VERSION" ]
-  then
+post_install()  {
+  if [ -z "$OLD_VERSION" ]; then
     echo "Successfully installed Authy v$VERSION!"
   else
     echo "Successfully updated Authy from v$OLD_VERSION to v$VERSION!"
@@ -108,4 +105,3 @@ download
 extract
 install
 post_install
-
