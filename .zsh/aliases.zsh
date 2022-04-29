@@ -15,8 +15,6 @@ alias lsn='ls -1'
 alias grep="grep --color"
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
 
-alias zshrc='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc'
-
 alias diff="diff --color"
 
 if command -v bat > /dev/null; then
