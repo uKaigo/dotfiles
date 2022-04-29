@@ -25,7 +25,9 @@ source $ZDOTDIR/.p10k.zsh
 # Load plugins
 load_plugin "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 load_plugin "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
-load_plugin "uKaigo/zsh-plugins" "zsh-plugins.plugin.zsh"
+load_plugin "ohmyzsh/ohmyzsh" "lib/key-bindings.zsh"
+load_plugin "ohmyzsh/ohmyzsh" "lib/termsupport.zsh"
+load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
 [ $TERM != "linux" ] && load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
 # Load vi keys settings (needs to be here because zsh-plugins overwrites it)
