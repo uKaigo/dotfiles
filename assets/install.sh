@@ -32,7 +32,7 @@ clone_repo () {
   printf "$YELLOW"
   git clone --bare "https://github.com/uKaigo/dotfiles" "$DOTFILES_HOME" || die
   printf "$RESET"
-  git --git-dir="$DOTFILES_HOME" config --local status.showUntrackedFiles no
+  config config --local status.showUntrackedFiles no
 }
 
 config () {
@@ -40,7 +40,7 @@ config () {
 }
 
 backup_files () {
-  files=$(git --git-dir="$DOTFILES_HOME" ls-tree --name-only --full-tree -r HEAD)
+  files=$(config ls-tree --name-only --full-tree -r HEAD)
   [ ! -z "$files" ] && inf "Backing up files..." 
   for file in $files; do
     [ ! -f "$file" ] && continue
