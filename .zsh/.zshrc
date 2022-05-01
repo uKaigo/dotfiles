@@ -1,4 +1,3 @@
-#!/bin/zsh
 # Set default prompt.
 PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%# "
 RPROMPT="%F{magenta}%*%f"
