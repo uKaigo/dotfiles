@@ -5,22 +5,16 @@ update_plugins () {
     return 0
   fi
 
-  START_LOC=$(pwd)
-
   cd "$PLUGINS_DIR"
-
   plugins=($(find */* -maxdepth 0))
+  cd -
 
   for plugin in $plugins
   do
-    cd "$PLUGINS_DIR/$plugin"
     echo "Updating \"$plugin\"..."
-    git pull
+    git -C "$PLUGINS_DIR/$plugin" pull
     echo
   done
-
-  # Go back to start location
-  cd "$START_LOC"
 }
 
 load_plugin () {
