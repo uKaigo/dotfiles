@@ -14,5 +14,11 @@ export EDITOR=lvim
 # Recognize comments
 setopt INTERACTIVE_COMMENTS
 
+# Change dir by typing dir name (without cd)
+setopt AUTO_CD
+
+# Remove right indentation
+export ZLE_RPROMPT_INDENT=0
+
 # Set Bash's PS4
 export PS4='+\033[1;33m(${BASH_SOURCE}:${LINENO})\033[m: ${FUNCNAME[0]:+\033[1;32m${FUNCNAME[0]}()\033[m: }'
