@@ -7,8 +7,9 @@ if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-p
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Add local bin to PATH
-export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+# Update PATH
+[ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
+[ -d $HOME/bin ] && export PATH="$HOME/bin:$PATH"
 
 # Load configuration
 source $ZDOTDIR/config.zsh
