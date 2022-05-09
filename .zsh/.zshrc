@@ -1,6 +1,6 @@
 # Set default prompt.
-PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%# "
-RPROMPT="%F{magenta}%*%f"
+PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%(#.#.$) "
+RPROMPT="%(?.. %? %F{red}%BX%b%f)%(1j. %j %F{yellow}%BJ%b%f.) [%*]"
 
 # Enable Powerlevel10k instant prompt, if not on tty.
 if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -20,6 +20,8 @@ source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/aliases.zsh
 # Load PowerLevel config
 source $ZDOTDIR/.p10k.zsh
+# Load vi keys settings
+source $ZDOTDIR/vikeys.zsh
 
 # Load plugins
 load_plugin "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
@@ -29,8 +31,8 @@ load_plugin "ohmyzsh/ohmyzsh" "lib/termsupport.zsh"
 load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
 [ $TERM != "linux" ] && load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
-# Load vi keys settings (needs to be here because zsh-plugins overwrites it)
-source $ZDOTDIR/vikeys.zsh
+# Use VIM keybindings (ohmyzsh/key-bindings overwrites it)
+bindkey -v 
 
 # Load NVM
 export NVM_DIR="$HOME/.nvm"

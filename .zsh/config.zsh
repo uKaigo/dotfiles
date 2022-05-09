@@ -16,4 +16,3 @@ setopt INTERACTIVE_COMMENTS
 
 # Set Bash's PS4
 export PS4='+\033[1;33m(${BASH_SOURCE}:${LINENO})\033[m: ${FUNCNAME[0]:+\033[1;32m${FUNCNAME[0]}()\033[m: }'
-
