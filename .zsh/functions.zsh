@@ -7,7 +7,7 @@ update_plugins () {
 
   cd "$PLUGINS_DIR"
   plugins=($(find */* -maxdepth 0))
-  cd -
+  cd - > /dev/null
 
   for plugin in $plugins
   do
