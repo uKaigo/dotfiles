@@ -1,3 +1,9 @@
+# Don't do anything if we're not in interactive mode.
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 # Enable Powerlevel10k instant prompt, if not on tty.
 if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -13,12 +19,12 @@ source $ZDOTDIR/config.zsh
 source $ZDOTDIR/functions.zsh
 # Load completion system
 source $ZDOTDIR/completion.zsh
+# Load vi keys settings
+source $ZDOTDIR/vikeys.zsh
 # Load aliases
 source $ZDOTDIR/aliases.zsh
 # Load PowerLevel config
 source $ZDOTDIR/.p10k.zsh
-# Load vi keys settings
-source $ZDOTDIR/vikeys.zsh
 
 # Load plugins
 load_plugin "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
