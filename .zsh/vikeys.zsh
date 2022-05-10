@@ -1,6 +1,6 @@
 # Set VI mode 
 bindkey -v
-export KEYTIMEOUT=1
+KEYTIMEOUT=1
 
 # Change cursor depending on mode
 function zle-keymap-select {

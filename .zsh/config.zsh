@@ -1,8 +1,8 @@
 # History settings
-export HISTFILE="$ZDOTDIR/.history"
-export HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S:  "
-export HISTSIZE=10000
-export SAVEHIST=5000
+HISTFILE="$ZDOTDIR/.history"
+HISTTIMEFORMAT="%Y/%m/%d %H:%M:%S:  "
+HISTSIZE=10000
+SAVEHIST=5000
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
@@ -18,7 +18,7 @@ setopt INTERACTIVE_COMMENTS
 setopt AUTO_CD
 
 # Remove right indentation
-export ZLE_RPROMPT_INDENT=0
+ZLE_RPROMPT_INDENT=0
 
 # Configure prompts
 PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%(#.#.$) "
