@@ -3,10 +3,6 @@ if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-p
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Set default prompt.
-PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%(#.#.$) "
-RPROMPT="%(?.. %? %F{red}%BX%b%f)%(1j. %j %F{yellow}%BJ%b%f.) [%*]"
-
 # Update PATH
 [ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 [ -d $HOME/bin ] && export PATH="$HOME/bin:$PATH"
