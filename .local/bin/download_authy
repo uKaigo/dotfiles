@@ -3,7 +3,7 @@
 # Git is required for version management.
 
 SNAPID="H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn"
-SNAPREV="9"
+SNAPREV="10"
 
 VERSION=""
 OLD_VERSION=""
@@ -16,9 +16,9 @@ get_version()  {
   [ ! -d "$HOME/.authy" ] && return
 
   _ver=""
-  if command -v git; then
+  if command -v git > /dev/null; then
     cd "$HOME/.authy" || return
-    _ver=$(git describe --tags)
+    _ver=$(git describe)
   else
     _ver=$(cat "$HOME/.authy/.version")
   fi
@@ -33,10 +33,10 @@ set_version()  {
   if command -v git; then
     cd "$HOME/.authy" || return
     git init
-    git checkout -b main
+    git checkout main
     git add .
     git commit -m "$VERSION"
-    git tag "$VERSION"
+    git tag "$VERSION" -m "$VERSION"
     git checkout "$VERSION" -q
   else
     echo "$VERSION" >> "$HOME/.authy/.version"
@@ -50,7 +50,6 @@ check_version()  {
     exit 1
   fi
   OLD_VERSION=$(get_version)
-
   if dpkg --compare-versions "$VERSION" le "$OLD_VERSION" 2> /dev/null; then
     echo Looks like Authy is already updated. Exitting.
     exit 0
