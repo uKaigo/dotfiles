@@ -21,7 +21,7 @@ setopt AUTO_CD
 ZLE_RPROMPT_INDENT=0
 
 # Configure prompts
-PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%% "
+PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%# "
 RPROMPT="%(?.. %? %F{red}%BX%b%f)%(1j. %j %F{yellow}%BJ%b%f.) [%*]"
 PROMPT2="> "
 RPROMPT2="[%F{magenta}%B%_%b%f]"
