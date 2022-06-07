@@ -8,8 +8,8 @@ SNAPREV="10"
 VERSION=""
 OLD_VERSION=""
 
-TEMPFILE=$(mktemp -p /tmp authy.XXXXXX)
-TEMPFOLDER=$(mktemp -d -p /tmp authy.XXXXXX)
+TEMPFILE=$(mktemp --tmpdir authy.XXXXXX)
+TEMPFOLDER=$(mktemp -d --tmpdir authy.XXXXXX)
 
 get_version()  {
   # If git is installed, use it. Otherwise, fallback to file.
