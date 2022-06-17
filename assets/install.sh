@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2059
 if [ -z "$DOTFILES_HOME" ]; then
-  DOTFILES_HOME="$HOME/dotfiles"
+  DOTFILES_HOME="$HOME/.dotfiles"
 fi
 
 RED='\033[1;31m'
