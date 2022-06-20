@@ -39,7 +39,13 @@ bindkey -v
 
 # Load NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  source "$NVM_DIR/nvm.sh"
+  if command -v yarn > /dev/null; then
+    export PATH="$(yarn global bin):$PATH"
+  fi
+fi
+
 
 # Load Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
