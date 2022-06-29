@@ -1,8 +1,5 @@
 # Don't do anything if we're not in interactive mode.
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
 # Enable Powerlevel10k instant prompt, if not on tty.
 if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
