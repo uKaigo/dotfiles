@@ -3,7 +3,11 @@
 # Git is required for version management.
 
 SNAPID="H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn"
-SNAPREV="10"
+if [ -n $1 ]; then
+  SNAPREV=$1
+else
+  SNAPREV=10
+fi 
 
 VERSION=""
 OLD_VERSION=""
