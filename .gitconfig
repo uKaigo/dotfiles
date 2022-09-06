@@ -1,6 +1,6 @@
 [user]
   name = Leonardo
-  email = kaigo.dev@gmail.com
+  email = 37600692+uKaigo@users.noreply.github.com
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
