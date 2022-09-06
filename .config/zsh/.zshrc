@@ -29,29 +29,12 @@ load_plugin "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighti
 load_plugin "ohmyzsh/ohmyzsh" "lib/key-bindings.zsh"
 load_plugin "ohmyzsh/ohmyzsh" "lib/termsupport.zsh"
 load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
+load_plugin "davidparsson/zsh-pyenv-lazy" "pyenv-lazy.plugin.zsh"
+load_plugin "uKaigo/zsh-nvm" "zsh-nvm.plugin.zsh"
 [ $TERM != "linux" ] && load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
 # Use VIM keybindings (ohmyzsh/key-bindings overwrites it)
 bindkey -v 
-
-# Load NVM
-export NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  source "$NVM_DIR/nvm.sh"
-  if command -v yarn > /dev/null; then
-    export PATH="$(yarn global bin):$PATH"
-  fi
-fi
-
-
-# Load Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-if [ -d $PYENV_ROOT ]; then
-  export PATH="$PYENV_ROOT/bin:$PATH"  # If `pyenv` is not already on PATH
-  eval "$(pyenv init --path)" 
-  eval "$(pyenv init -)"
-  # eval "$(pyenv virtualenv-init -)"
-fi
 
 # Add cargo to PATH
 [ -s $HOME/.cargo/env ] && source $HOME/.cargo/env
