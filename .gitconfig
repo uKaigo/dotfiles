@@ -23,7 +23,7 @@
 [core]
   excludesfile = ~/.gitignore_global
   pager = delta
-  autocrlf = false
+  autocrlf = input
 [interactive]
   diffFilter = delta --color-only
 [delta]
