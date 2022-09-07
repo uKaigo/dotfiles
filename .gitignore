@@ -1,0 +1,2 @@
+# Make sure it's not tracked
+.env
