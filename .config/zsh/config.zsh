@@ -32,3 +32,5 @@ export PS4='+\033[1;33m(${BASH_SOURCE}:${LINENO})\033[m: ${FUNCNAME[0]:+\033[1;3
 export PROMPT4='+%F{yellow}%B(%x:%I)%b%f: ' # Not equivalent to Bash's, but similar
 
 NVM_LAZY_LOAD=true
+
+YSU_MESSAGE_POSITION="after"

@@ -36,6 +36,7 @@ load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
 load_plugin "davidparsson/zsh-pyenv-lazy" "pyenv-lazy.plugin.zsh"
 load_plugin "uKaigo/zsh-nvm" "zsh-nvm.plugin.zsh"
 load_plugin "MichaelAquilina/zsh-auto-notify" "auto-notify.plugin.zsh"
+load_plugin "MichaelAquilina/zsh-you-should-use" "you-should-use.plugin.zsh"
 load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
 # Use VIM keybindings (ohmyzsh/key-bindings overwrites it)
@@ -46,4 +47,3 @@ bindkey -v
 
 # Load command-not-found handler
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
-

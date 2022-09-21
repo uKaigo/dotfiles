@@ -13,4 +13,3 @@ fi
 # Bare dotfiles alias
 alias config='git --git-dir ${DOTFILES_HOME:-$HOME/.dotfiles} --work-tree=$HOME'
 alias privconfig='git --git-dir ${DOTFILES_PRIVATE_HOME:-$HOME/dotfiles-private} --work-tree=$HOME'
-
