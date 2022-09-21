@@ -1,18 +1,22 @@
 local use = require('packer').use
 
 require('packer').startup({function()
-  use 'wbthomason/packer.nvim' -- Package manager
-  use 'navarasu/onedark.nvim' -- onedark colorscheme
+  use 'wbthomason/packer.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'lewis6991/gitsigns.nvim'
   use {
-    'kyazdani42/nvim-tree.lua', -- File explorer
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons'
   }
   use {
     'akinsho/bufferline.nvim',
     tag = "v2.*",
     requires = 'kyazdani42/nvim-web-devicons',
+  }
+  use "folke/which-key.nvim"
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = 'kyazdani42/nvim-web-devicons'
   }
 end,
 config = {
@@ -22,4 +26,3 @@ config = {
     end
   }
 }})
-
