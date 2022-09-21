@@ -41,3 +41,4 @@ bindkey -v
 
 # Load command-not-found handler
 [ -f /etc/zsh_command_not_found ] && source /etc/zsh_command_not_found
+
