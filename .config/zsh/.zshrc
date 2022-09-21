@@ -1,8 +1,8 @@
 # Don't do anything if we're not in interactive mode.
 [[ $- != *i* ]] && return
 
-# Enable Powerlevel10k instant prompt, if not on tty.
-if [ $TERM != "linux" ] && [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+# Enable Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -21,7 +21,11 @@ source $ZDOTDIR/vikeys.zsh
 # Load aliases
 source $ZDOTDIR/aliases.zsh
 # Load PowerLevel config
-source $ZDOTDIR/.p10k.zsh
+if [ $TERM != "linux" ]; then
+  source $ZDOTDIR/.p10k.zsh
+else
+  source $ZDOTDIR/.p10k-tty.zsh
+fi
 
 # Load plugins
 load_plugin "zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
@@ -31,7 +35,7 @@ load_plugin "ohmyzsh/ohmyzsh" "lib/termsupport.zsh"
 load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
 load_plugin "davidparsson/zsh-pyenv-lazy" "pyenv-lazy.plugin.zsh"
 load_plugin "uKaigo/zsh-nvm" "zsh-nvm.plugin.zsh"
-[ $TERM != "linux" ] && load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
+load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
 # Use VIM keybindings (ohmyzsh/key-bindings overwrites it)
 bindkey -v 
