@@ -2,18 +2,13 @@
 # Utility to download and extract Authy from Snap.
 # Git is required for version management.
 
-SNAPID="H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn"
-if [ -n $1 ]; then
-  SNAPREV=$1
-else
-  SNAPREV=10
-fi 
-
 VERSION=""
 OLD_VERSION=""
 
 TEMPFILE=$(mktemp --tmpdir authy.XXXXXX)
 TEMPFOLDER=$(mktemp -d --tmpdir authy.XXXXXX)
+
+SNAPDATA=""
 
 get_version()  {
   # If git is installed, use it. Otherwise, fallback to file.
@@ -47,8 +42,16 @@ set_version()  {
   fi
 }
 
+get_data()  {
+  SNAPDATA=$(curl -s -H 'Snap-Device-Series: 16' "https://api.snapcraft.io/v2/snaps/info/authy")
+  if [ -z "$SNAPDATA" ]; then
+    echo "Couldn't get snap data! Exitting."
+    exit 1
+  fi
+}
+
 check_version()  {
-  VERSION=$(curl -s "https://api.snapcraft.io/v2/snaps/info/authy?fields=version" -H "Snap-Device-Series: 16" | jq -r '.["channel-map"][0]["version"]')
+  VERSION=$(printf '%s' "$SNAPDATA" | jq -r '.["channel-map"][0]["version"]')
   if [ -z "$VERSION" ]; then
     echo "Couldn't determine upstream version! Exitting."
     exit 1
@@ -61,8 +64,13 @@ check_version()  {
 }
 
 download()  {
+  url=$(printf '%s' "$SNAPDATA" | jq -r '.["channel-map"][0].download.url')
+  if [ -z "$url" ]; then
+    echo "Couldn't get download url! Exitting."
+    exit 1
+  fi
   echo "Downloading Authy v$VERSION..."
-  wget -q -O "$TEMPFILE" --show-progress "https://api.snapcraft.io/api/v1/snaps/download/${SNAPID}_${SNAPREV}.snap"
+  wget -q -O "$TEMPFILE" --show-progress "$url"
 }
 
 extract()  {
@@ -103,6 +111,7 @@ post_install()  {
   fi
 }
 
+get_data
 check_version
 download
 extract
