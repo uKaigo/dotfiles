@@ -1,6 +1,11 @@
 # Don't do anything if we're not in interactive mode.
 [[ $- != *i* ]] && return
 
+if [ "$TERM" = "linux" ]; then
+  echo -ne '\e]P0150414\e]P7FFFFFF\ec' # Change tty background
+  clear
+fi
+
 # Enable Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -21,7 +26,7 @@ source $ZDOTDIR/vikeys.zsh
 # Load aliases
 source $ZDOTDIR/aliases.zsh
 # Load PowerLevel config
-if [ $TERM != "linux" ]; then
+if [ "$TERM" != "linux" ]; then
   source $ZDOTDIR/.p10k.zsh
 else
   source $ZDOTDIR/.p10k-tty.zsh
