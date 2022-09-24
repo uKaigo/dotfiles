@@ -36,3 +36,15 @@ load_plugin () {
 
     source "$PLUGINS_DIR/$plugin_id/$entrypoint"
 }
+
+is_termux () {
+  type termux-reload-settings > /dev/null
+}
+
+# Polyfill for zsh-auto-notify
+if is_termux; then
+  notify-send () {
+    termux-notification -t "$1" -c "$2"   
+  }
+fi
+
