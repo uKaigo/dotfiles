@@ -15,10 +15,10 @@ fi
 [ -d $HOME/.local/bin ] && export PATH="$HOME/.local/bin:$PATH"
 [ -d $HOME/bin ] && export PATH="$HOME/bin:$PATH"
 
-# Load configuration
-source $ZDOTDIR/config.zsh
 # Load functions
 source $ZDOTDIR/functions.zsh
+# Load configuration
+source $ZDOTDIR/config.zsh
 # Load completion system
 source $ZDOTDIR/completion.zsh
 # Load vi keys settings

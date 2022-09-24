@@ -8,8 +8,8 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY
 
-# Set LunarVim as default editor
-export EDITOR=lvim
+# Set NeoVim as default editor
+export EDITOR=nvim
 
 # Recognize comments
 setopt INTERACTIVE_COMMENTS
@@ -20,7 +20,7 @@ setopt AUTO_CD
 # Remove right indentation
 ZLE_RPROMPT_INDENT=0
 
-# Configure prompts
+# Configure default prompts
 PROMPT="[%B%F{magenta}%n%f%b@%B%F{magenta}%m%f%b %B%F{white}%~%f%b]%# "
 RPROMPT="%(?.. %? %F{red}%BX%b%f)%(1j. %j %F{yellow}%BJ%b%f.) [%*]"
 PROMPT2="> "
@@ -32,5 +32,8 @@ export PS4='+\033[1;33m(${BASH_SOURCE}:${LINENO})\033[m: ${FUNCNAME[0]:+\033[1;3
 export PROMPT4='+%F{yellow}%B(%x:%I)%b%f: ' # Not equivalent to Bash's, but similar
 
 NVM_LAZY_LOAD=true
+if is_termux; then
+  ZSH_NVM_NO_LOAD=true
+fi
 
 YSU_MESSAGE_POSITION="after"
