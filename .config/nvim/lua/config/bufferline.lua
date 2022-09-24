@@ -8,8 +8,9 @@ require("bufferline").setup {
         filetype = "NvimTree",
         text = "File Explorer",
         text_align = "center",
-        separator = true,
+        separator = false,
       }
-    }
+    },
+    always_show_bufferline = false
   }
 }
