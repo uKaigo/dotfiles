@@ -11,6 +11,8 @@ require('onedark').load()
 vim.o.number = true
 vim.o.mouse = 'h'
 vim.o.wrap = false
+vim.o.splitright = true
+vim.o.cursorline = true
 
 -- Load other configurations
 require('config.numbertoggle')
