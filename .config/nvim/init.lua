@@ -11,11 +11,12 @@ require('onedark').load()
 vim.o.number = true
 vim.o.mouse = 'h'
 vim.o.wrap = false
-vim.o.splitright = true -- Fix NvimTree opening in right
 vim.o.cursorline = true
 
+-- Load other scripts
+require('scripts.numbertoggle')
+
 -- Load other configurations
-require('config.numbertoggle')
 require('config.nvimtree')
 require('config.bufferline')
 require('config.gitsigns')

@@ -1,5 +1,6 @@
 vim.g.loaded = true
 vim.g.loaded_netrwPlugin = true
+vim.o.splitright = true -- Fix the tree opening in right side
 
 require('nvim-tree').setup {
   hijack_cursor = false,
