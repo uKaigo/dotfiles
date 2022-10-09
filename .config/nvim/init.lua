@@ -11,7 +11,7 @@ require('onedark').load()
 vim.o.number = true
 vim.o.mouse = 'h'
 vim.o.wrap = false
-vim.o.splitright = true
+vim.o.splitright = true -- Fix NvimTree opening in right
 vim.o.cursorline = true
 
 -- Load other configurations
@@ -21,3 +21,4 @@ require('config.bufferline')
 require('config.gitsigns')
 require('config.whichkey')
 require('config.lualine')
+require('config.treesitter')
