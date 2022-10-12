@@ -14,7 +14,6 @@ require("packer").startup({
 			tag = "v2.*",
 			requires = "kyazdani42/nvim-web-devicons",
 		})
-		use("folke/which-key.nvim")
 		use({
 			"nvim-lualine/lualine.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
