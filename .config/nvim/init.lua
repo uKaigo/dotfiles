@@ -30,12 +30,13 @@ for k, v in pairs(vim_options) do
 end
 
 -- Load other scripts
-require("scripts.numbertoggle")
+prequire = require("scripts.functions").prequire
+prequire("scripts.numbertoggle")
 
 -- Load other configurations
-require("config.nvimtree")
-require("config.bufferline")
-require("config.gitsigns")
-require("config.lualine")
-require("config.treesitter")
-require("config.mapx")
+prequire("config.nvimtree")
+prequire("config.bufferline")
+prequire("config.gitsigns")
+prequire("config.lualine")
+prequire("config.treesitter")
+prequire("config.mapx")
