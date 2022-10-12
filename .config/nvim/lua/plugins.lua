@@ -24,6 +24,7 @@ require("packer").startup({
 				require("nvim-treesitter.install").update({ with_sync = true })
 			end,
 		})
+		use("b0o/mapx.nvim")
 	end,
 	config = {
 		display = {
