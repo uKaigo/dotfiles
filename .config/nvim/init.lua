@@ -8,7 +8,7 @@ require('onedark').setup {
 require('onedark').load()
 
 -- General options
-vim_options = {
+local vim_options = {
   number = true,
   mouse = 'a', -- It's nice to have the option :)
   wrap = false,
