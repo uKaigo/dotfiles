@@ -21,5 +21,8 @@ require('nvim-tree').setup {
     highlight_opened_files = "all",
     root_folder_modifier = ':t',
     special_files = { 'Cargo.toml', 'setup.py', 'package.json', 'Makefile', 'README.md', 'readme.md' }
+  },
+  filters = {
+    custom = { "__pycache__" }
   }
 }
