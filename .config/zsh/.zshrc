@@ -40,7 +40,6 @@ load_plugin "ohmyzsh/ohmyzsh" "lib/termsupport.zsh"
 load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
 load_plugin "davidparsson/zsh-pyenv-lazy" "pyenv-lazy.plugin.zsh"
 load_plugin "uKaigo/zsh-nvm" "zsh-nvm.plugin.zsh"
-load_plugin "MichaelAquilina/zsh-auto-notify" "auto-notify.plugin.zsh"
 load_plugin "MichaelAquilina/zsh-you-should-use" "you-should-use.plugin.zsh"
 load_plugin "romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 
