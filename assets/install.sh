@@ -37,6 +37,13 @@ clone_repo()  {
   config config --local status.showUntrackedFiles no
 }
 
+clone_submodules()  {
+  inf "Cloning submodules..."
+  printf "$YELLOW"
+  config submodule init
+  config submodule update
+  printf "$RESET"
+
 config()  {
   git --git-dir="$DOTFILES_HOME" --work-tree="$HOME" "$@"
 }
@@ -65,6 +72,7 @@ check_deps "git"
 inf "Installing uKaigo's dotfiles..."
 
 clone_repo
+clone_submodules
 backup_files
 checkout
 
