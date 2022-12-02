@@ -43,6 +43,7 @@ clone_submodules()  {
   config submodule init
   config submodule update
   printf "$RESET"
+}
 
 config()  {
   git --git-dir="$DOTFILES_HOME" --work-tree="$HOME" "$@"
@@ -72,9 +73,9 @@ check_deps "git"
 inf "Installing uKaigo's dotfiles..."
 
 clone_repo
-clone_submodules
 backup_files
 checkout
+clone_submodules
 
 inf "Installed."
 inf "Recommended packages: zsh, delta (dandavison/delta)"
