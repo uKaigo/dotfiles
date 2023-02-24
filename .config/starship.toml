@@ -36,6 +36,9 @@ symbol = "·"
 [git_branch]
 symbol = " "
 
+[hostname]
+ssh_symbol = ""
+
 [lua]
 symbol = " "
 
