@@ -15,6 +15,7 @@ $git_status\
 
 $fill \
 
+$cmd_duration\
 $docker_context\
 $lua\
 $nodejs\
