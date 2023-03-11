@@ -29,7 +29,7 @@ set_version()  {
   # If git is installed, use it. Otherwise, fallback to file.
   [ ! -d "$HOME/.authy" ] && return
 
-  if command -v git; then
+  if command -v git > /dev/null; then
     cd "$HOME/.authy" || return
     git init
     git checkout main
