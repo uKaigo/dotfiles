@@ -4,6 +4,10 @@ _run_if_found starship init fish | source
 
 _run_if_found rtx activate -s fish | source
 
+# I'm hardcoding the bin folder because `yarn global bin`
+# takes about 500ms.
+fish_add_path -P "$HOME/.yarn/bin"
+
 type -q bat && abbr cat 'bat -pp'
 type -q exa && abbr ls 'exa -a --icons'
 type -q exa && abbr exa 'exa -a --icons' # Abbreviations are not recursive.
