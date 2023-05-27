@@ -10,4 +10,4 @@ fish_add_path -P "$HOME/.yarn/bin"
 
 type -q bat && abbr cat 'bat -pp'
 type -q exa && abbr ls 'exa -a --icons'
-type -q exa && abbr exa 'exa -a --icons' # Abbreviations are not recursive.
+type -q exa && abbr exa 'exa --icons' # Abbreviations are not recursive.
