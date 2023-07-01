@@ -5,6 +5,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local opts = {
   sources = {
     null_ls.builtins.formatting.blue,
+    null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.ruff,
   },
   on_attach = function(client, bufnr)

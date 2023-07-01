@@ -38,7 +38,7 @@ local P = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = { "python" },
+    ft = { "python", "lua" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -48,6 +48,7 @@ local P = {
     opts = {
       ensure_installed = {
         "blue",
+        "stylua",
         "pyright",
         "ruff",
         "debugpy",
