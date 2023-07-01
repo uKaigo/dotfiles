@@ -62,5 +62,13 @@ local P = {
       require "custom.configs.lspconfig"
     end,
   },
+  {
+    "rgroli/other.nvim",
+    cmd = { "Other", "OtherSplit", "OtherVSplit" },
+    keys = { "<leader>o", "<leader>of", "<leader>os", "<leader>ov" },
+    config = function(_, _)
+      require("core.utils").load_mappings "other"
+    end,
+  },
 }
 return P

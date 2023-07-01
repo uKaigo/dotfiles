@@ -35,4 +35,13 @@ M.dap_python = {
   },
 }
 
+M.other = {
+  plugin = true,
+  n = {
+    ["<leader>of"] = { "<cmd> Other <CR>", "Open Other file" },
+    ["<leader>os"] = { "<cmd> OtherSplit <CR>", "Open Other file in horizontal split" },
+    ["<leader>ov"] = { "<cmd> OtherVSplit <CR>", "Open Other file in vertical split" },
+  },
+}
+
 return M
