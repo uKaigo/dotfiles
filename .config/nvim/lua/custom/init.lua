@@ -8,4 +8,4 @@ opt.sidescrolloff = 4
 opt.colorcolumn = "80"
 opt.shell = "/bin/fish"
 
-require('custom.autocmds')
+require "custom.autocmds"

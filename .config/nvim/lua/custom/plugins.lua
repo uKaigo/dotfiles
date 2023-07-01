@@ -15,13 +15,13 @@ local P = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end
+    end,
   },
   {
     "mfussenegger/nvim-dap",
     config = function(_, _)
-      require("core.utils").load_mappings("dap")
-    end
+      require("core.utils").load_mappings "dap"
+    end,
   },
   {
     "mfussenegger/nvim-dap-python",
@@ -33,12 +33,12 @@ local P = {
     config = function(_, _)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings("dap_python")
-    end
+      require("core.utils").load_mappings "dap_python"
+    end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"python"},
+    ft = { "python" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -51,15 +51,15 @@ local P = {
         "pyright",
         "ruff",
         "debugpy",
-      }
-    }
+      },
+    },
   },
   {
     "neovim/nvim-lspconfig",
-    config = function ()
+    config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
-    end
+    end,
   },
 }
 return P
