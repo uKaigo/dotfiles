@@ -66,10 +66,11 @@ local P = {
   {
     "rgroli/other.nvim",
     cmd = { "Other", "OtherSplit", "OtherVSplit" },
-    keys = { "<leader>o", "<leader>of", "<leader>os", "<leader>ov" },
-    config = function(_, _)
-      require("core.utils").load_mappings "other"
-    end,
+    keys = {
+      { "<leader>of", "<cmd> Other <CR>", desc = "Open Other file" },
+      { "<leader>os", "<cmd> OtherSplit <CR>", desc = "Open Other file in horizontal split" },
+      { "<leader>ov", "<cmd> OtherVSplit <CR>", desc = "Open Other file in vertical split" },
+    },
   },
   {
     "rust-lang/rust.vim",
