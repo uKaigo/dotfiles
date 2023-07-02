@@ -20,6 +20,14 @@ M.dap = {
   plugin = true,
   n = {
     ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>", "Add debug breakpoint" },
+    ["<leader>dus"] = {
+      function()
+        local widgets = require "dap.ui.widgets"
+        local sidebar = widgets.sidebar(widgets.scopes)
+        sidebar.open()
+      end,
+      "Open debugging sidebar",
+    },
   },
 }
 
@@ -41,6 +49,17 @@ M.other = {
     ["<leader>of"] = { "<cmd> Other <CR>", "Open Other file" },
     ["<leader>os"] = { "<cmd> OtherSplit <CR>", "Open Other file in horizontal split" },
     ["<leader>ov"] = { "<cmd> OtherVSplit <CR>", "Open Other file in vertical split" },
+  },
+}
+
+M.crates = {
+  n = {
+    ["<leader>rcu"] = {
+      function()
+        require("crates").upgrade_all_crates()
+      end,
+      "Update crates",
+    },
   },
 }
 
