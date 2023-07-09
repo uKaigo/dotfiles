@@ -48,7 +48,7 @@ local P = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = { "python", "lua" },
+    ft = { "python", "lua", "bash", "sh" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -83,6 +83,7 @@ local P = {
         "ruff",
         "debugpy",
         "rust_analyzer",
+        "shellcheck",
       },
     },
   },

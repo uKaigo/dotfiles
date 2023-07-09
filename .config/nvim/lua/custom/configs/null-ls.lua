@@ -7,6 +7,7 @@ local opts = {
     null_ls.builtins.formatting.blue,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.ruff,
+    null_ls.builtins.diagnostics.shellcheck,
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
