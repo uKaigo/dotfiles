@@ -1,11 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 # shellcheck disable=SC2059
 if [ -z "$DOTFILES_HOME" ]; then
   DOTFILES_HOME="$HOME/.dotfiles"
 fi
 
 RED='\033[1;31m'
-GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 PURPLE='\033[1;35m'
 RESET='\033[m'
@@ -60,7 +59,7 @@ install_nvchad() {
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     inf "Installing NvChad to '$HOME/.config/nvim'..."
-    cd "$HOME/.config/nvim"
+    cd "$HOME/.config/nvim" || exit
     # https://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory 
     git init
     git remote add origin "https://github.com/NvChad/NvChad"
@@ -68,7 +67,7 @@ install_nvchad() {
     # https://stackoverflow.com/questions/28666357/how-to-get-default-git-branch
     branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
     git checkout -t "origin/$branch"
-    cd - > /dev/null
+    cd - > /dev/null || exit
   fi
 }
 
