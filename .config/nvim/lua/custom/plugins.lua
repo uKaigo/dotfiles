@@ -89,6 +89,11 @@ local P = {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = require "custom.configs.nvim-tree",
+  },
+
+  {
     "rgroli/other.nvim",
     cmd = { "Other", "OtherSplit", "OtherVSplit" },
     keys = {
