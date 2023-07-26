@@ -102,5 +102,10 @@ local P = {
       { "<leader>ov", "<cmd> OtherVSplit <CR>", desc = "Open Other file in vertical split" },
     },
   },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
 }
 return P
