@@ -25,7 +25,7 @@ export EXIT_FLAG=1
 trap 'EXIT_FLAG=$(($EXIT_FLAG ^ 1))' USR1
 
 # Start tmux:
-tmux new-session -s "SH$$" "TMUX_PPID=$$ $SHELL -l"
+tmux new-session -s "SH$$" "TMUX_PPID=$$ $SHELL -l"\; setenv TMUX_PPID $$
 
 # Exit, assuming the exit flag has not been flipped:
 if [ "$EXIT_FLAG" == "1" ]; then
