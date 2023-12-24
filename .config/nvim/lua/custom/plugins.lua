@@ -82,7 +82,7 @@ local P = {
         "pyright",
         "ruff",
         "debugpy",
-        "rust_analyzer",
+        "rust-analyzer",
         "shellcheck",
       },
     },
@@ -103,9 +103,9 @@ local P = {
     },
   },
 
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-  },
+  -- {
+  --   "christoomey/vim-tmux-navigator",
+  --   lazy = false,
+  -- },
 }
 return P

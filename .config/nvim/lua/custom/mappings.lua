@@ -1,22 +1,22 @@
 local M = {}
 
-M.general = {
-  n = {
-    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "window left" },
-    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "window right" },
-    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "window down" },
-    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "window up" },
-  },
-}
+-- M.general = {
+--   n = {
+--     ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "window left" },
+--     ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "window right" },
+--     ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "window down" },
+--     ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "window up" },
+--   },
+-- }
 
 M.move = {
   n = {
-    ["<A-j>"] = { "<cmd> m .+1 <CR>==", "Move 1 line down" },
     ["<A-k>"] = { "<cmd> m .-2 <CR>==", "Move 1 line up" },
+    ["<A-j>"] = { "<cmd> m .+1 <CR>==", "Move 1 line down" },
   },
   i = {
-    ["<A-j>"] = { "<Esc> <cmd> m .+1 <CR>==gi", "Move 1 line down" },
     ["<A-k>"] = { "<Esc> <cmd> m .-2 <CR>==gi", "Move 1 line up" },
+    ["<A-j>"] = { "<Esc> <cmd> m .+1 <CR>==gi", "Move 1 line down" },
   },
   v = {
     -- The colon is needed for the mark to be set.
