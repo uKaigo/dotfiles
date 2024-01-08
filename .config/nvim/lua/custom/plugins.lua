@@ -47,7 +47,7 @@ local P = {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     ft = { "python", "lua", "bash", "sh" },
     opts = function()
       return require "custom.configs.null-ls"
