@@ -1,0 +1,47 @@
+show-fixes = true
+select = [
+  "I",              # isort
+  "B",              # flake8-bugbear
+  "F",              # pyflakes
+  "G",              # flake8-logging-format
+  "FIX",            # flake8-fixme
+  "PIE",            # flake8-pie
+  "ICN",            # flake8-import-conventions
+  "ISC",            # flake8-implicit-str-concat
+  "FBT",            # flake8-boolean-trap
+  "FLY",            # flynt
+  "PERF",           # perflint
+  "FURB",           # refurb
+  "BLE",            # flake8-blind-except
+  "RUF",            # ruff
+  "RET",            # flake8-return
+  "SIM",            # flake8-simplify
+  "TCH",            # flake8-type-checking
+  "ASYNC",          # flake8-async
+  "C4",             # flake8-comprehensions
+  "C90",            # mccabe
+  "T20"             # flake-print
+  "S1",             # flake8-bandit (1xx)
+  "W29", "W605"     # pycodestyle (29x, 605)
+  "Q003",           # flake8-quotes (003)
+  "E4", "E7", "E9", # pycodestyle (4xx, 7xx, 9xx)
+]
+ignore = ["S101", "FURB101"]
+output-format = "grouped"
+
+[extend-per-file-ignores]
+"__init__.py" = ["F401"]
+
+[format]
+quote-style = "single"
+docstring-code-format = true
+
+[flake8-quotes]
+inline-quotes="single"
+
+[flake8-type-checking]
+quote-annotations = true
+
+[isort]
+length-sort = true
+force-single-line = false
