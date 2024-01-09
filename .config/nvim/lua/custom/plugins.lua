@@ -77,7 +77,6 @@ local P = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "blue",
         "stylua",
         "pyright",
         "ruff",
