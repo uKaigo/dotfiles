@@ -7,7 +7,6 @@ select = [
   "FIX",            # flake8-fixme
   "PIE",            # flake8-pie
   "ICN",            # flake8-import-conventions
-  "ISC",            # flake8-implicit-str-concat
   "FBT",            # flake8-boolean-trap
   "FLY",            # flynt
   "PERF",           # perflint
@@ -41,6 +40,9 @@ inline-quotes="single"
 
 [flake8-type-checking]
 quote-annotations = true
+
+[pydocstyle]
+convention = "numpy"
 
 [isort]
 length-sort = true
