@@ -18,7 +18,7 @@ select = [
   "ASYNC",          # flake8-async
   "C4",             # flake8-comprehensions
   "C90",            # mccabe
-  "T20",            # flake-print
+  # "T20",          # flake-print, include in production code
   "S1",             # flake8-bandit (1xx)
   "Q003",           # flake8-quotes (003)
   "W29", "W605",    # pycodestyle (29x, 605)
@@ -29,7 +29,7 @@ ignore = ["S101"]
 output-format = "grouped"
 
 [extend-per-file-ignores]
-"__init__.py" = ["F401"]
+"__init__.py" = ["F401", "F403"] # May want to export "*".
 
 [format]
 quote-style = "single"
