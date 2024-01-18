@@ -28,9 +28,6 @@ select = [
 ignore = ["S101"]
 output-format = "grouped"
 
-[extend-per-file-ignores]
-"__init__.py" = ["F401", "F403"] # May want to export "*".
-
 [format]
 quote-style = "single"
 docstring-code-format = true
