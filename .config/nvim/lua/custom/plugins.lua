@@ -80,6 +80,7 @@ local P = {
         "stylua",
         "pyright",
         "ruff",
+        "shfmt",
         "debugpy",
         "rust-analyzer",
         "shellcheck",
