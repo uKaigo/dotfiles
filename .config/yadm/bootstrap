@@ -1,24 +1,44 @@
-#!/bin/bash
+#!/bin/env python
+# This file is a reimplementation of bootstrap-in-dir to work with scripts that
+# require stdin.
+# I found it easier to reimplement in Python then to fix the bash code :)
+# https://github.com/TheLocehiliosan/yadm/blob/master/contrib/bootstrap/bootstrap-in-dir
+import os
+import sys
+import subprocess
+from pathlib import Path
 
-# Save this file as ~/.config/yadm/bootstrap and make it executable. It will
-# execute all executable files (excluding templates and editor backups) in the
-# ~/.config/yadm/bootstrap.d directory when run.
 
-set -euo pipefail
+def debug(*text: str, sep: str = ' ') -> None:
+    print(f'\033[30m[bootstrap] {sep.join(text)}\033[m')
 
-# Directory to look for bootstrap executables in
-BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
 
-if [[ ! -d "$BOOTSTRAP_D" ]]; then
-	echo "Error: bootstrap directory '$BOOTSTRAP_D' not found" >&2
-	exit 1
-fi
+def file_filter(f: Path) -> bool:
+    conditions = (
+        f.is_file(),
+        os.access(str(f), os.R_OK | os.X_OK),
+        '##' not in str(f),
+        '~$' not in str(f),
+    )
+    return all(conditions)
 
-find -L "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
-	if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
-		if ! "$bootstrap"; then
-			echo "Error: bootstrap '$bootstrap' failed" >&2
-			exit 1
-		fi
-	fi
-done
+
+BOOTSTRAP_D = Path(f'{__file__}_d')
+if not BOOTSTRAP_D.exists():
+    print(f"Error: bootstrap directory '{BOOTSTRAP_D}' not found", file=sys.stderr)
+    sys.exit(1)
+
+
+files = tuple(sorted(filter(file_filter, BOOTSTRAP_D.glob('*'))))
+debug(f'Running {len(files)} scripts...')
+
+
+for file in files:
+    try:
+        debug(f"Running '{file.name.partition('.')[0]}'...")
+        if subprocess.call(str(file)):
+            print(f"\nError: bootstrap '{file}' failed", file=sys.stderr)
+            sys.exit(1)
+    except KeyboardInterrupt:
+        sys.exit(0)
+    print()

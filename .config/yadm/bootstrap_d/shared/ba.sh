@@ -40,6 +40,7 @@ confirm() {
 	while true; do
 		printf "$YELLOW"
 		read -rp "${message} (${YESWORD} / ${NOWORD})? " yn
+		printf "$RESET"
 		if [[ "$yn" =~ $YESEXPR ]]; then return 0; fi
 		if [[ "$yn" =~ $NOEXPR ]]; then return 1; fi
 	done

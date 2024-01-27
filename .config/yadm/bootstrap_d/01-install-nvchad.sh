@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 FILE_PATH="${0%/*}"
-source "$FILE_PATH/common.sh"
+source "$FILE_PATH/shared/ba.sh"
 
 NVIM_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
 

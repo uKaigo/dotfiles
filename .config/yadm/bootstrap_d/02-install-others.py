@@ -1,83 +1,32 @@
-#!/bin/env python
+#!/bin/env python3
+# BOOTSTRAP INITIALIZATION
 from __future__ import annotations
 
 import sys
+from os import path
 
 if sys.hexversion <= 0x030800F0:
-    # 3.8 is the minimum version still supported by Python.
+    # 3.8 is the minimum version still maintained.
     raise RuntimeError('Minimum Python version is 3.8.0!')
 
-import re
-import shlex
-import subprocess
-from os import path
+__package__ = 'shared'
+sys.path.insert(0, path.dirname('__file__'))
+
+# BOOTSTRAP CODE
 from enum import Enum
 from shutil import which
-from typing import TYPE_CHECKING, Sequence
-from functools import lru_cache
-from contextlib import suppress as supress_exc
-from subprocess import PIPE, Popen, CalledProcessError
+from typing import TYPE_CHECKING
 from collections import deque
 from dataclasses import dataclass
 
-if TYPE_CHECKING:
-    from typing import Deque, Tuple
+from shared.py import inf, run, confirm
 
+if TYPE_CHECKING:
+    from typing import Deque, Sequence
 
 YELLOW = '\033[33m'
 YELLOW_B = '\033[33;1m'
 RESET = '\033[m'
-
-
-def inf(*text: str, sep: str = ' ') -> None:
-    print(f'{YELLOW_B}{sep.join(text)}{RESET}')
-
-
-@lru_cache(maxsize=None)
-def get_confirm_locale() -> Tuple[re.Pattern[str], re.Pattern[str], str, str]:
-    yespt = re.compile(r'^[+1yY]')
-    nopt = re.compile(r'^[-0nN]')
-    yesstr = 'yes'
-    nostr = 'no'
-
-    with supress_exc(FileNotFoundError, CalledProcessError):
-        output = subprocess.check_output(['locale', 'LC_MESSAGES'])
-
-        data = output.decode().splitlines()
-        if len(data) <= 4:
-            return (yespt, nopt, yesstr, nostr)
-
-        yespt = re.compile(data[0])
-        nopt = re.compile(data[1])
-        yesstr = data[2]
-        nostr = data[3]
-
-    return (yespt, nopt, yesstr, nostr)
-
-
-def confirm(text: str) -> bool:
-    yespt, nopt, yesstr, nostr = get_confirm_locale()
-    while True:
-        res = input(f'{YELLOW}{text} ({yesstr} / {nostr})?{RESET} ').strip()
-        if yespt.match(res):
-            return True
-        if nopt.match(res):
-            return False
-
-
-def run(*args: str) -> None:
-    if len(args) == 1:
-        args = tuple(shlex.split(args[0]))
-
-    with Popen(args, stdout=PIPE, bufsize=1, universal_newlines=True) as proc:
-        assert proc.stdout is not None  # type checker
-
-        try:
-            for line in proc.stdout:
-                print(line, end='')
-        except:
-            proc.kill()
-            raise
 
 
 def install(*packages: Package, confirm: bool = True) -> bool:
@@ -156,7 +105,7 @@ inf(
     'Before installing packages, the system must be updated to prevent partial-updates.'
 )
 if confirm("Run 'sudo pacman -Syu'"):
-    run('sudo pacman -Syu')
+    run('sudo', 'pacman', '-Syu')
 
 if confirm('Do you want to install all recommended packages'):
     to_install = filter(lambda e: not which(e.binary), PACKAGES)
