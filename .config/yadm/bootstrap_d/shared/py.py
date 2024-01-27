@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import sys
 import shlex
 import subprocess
 from typing import Tuple, Union
@@ -49,7 +50,7 @@ def confirm(text: str) -> bool:
             if nopt.match(res):
                 return False
     except KeyboardInterrupt:
-        raise SystemExit() from None
+        sys.exit(0)
 
 
 def run(arg_0: str, /, *args: str, shell: bool = False) -> None:

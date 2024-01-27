@@ -1,0 +1,8 @@
+# py38 testing
+.ruff_cache
+.tool-versions
+ruff.toml
+pyrightconfig.json
+
+# python
+__pycache__/

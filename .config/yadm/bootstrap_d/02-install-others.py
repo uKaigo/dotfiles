@@ -88,6 +88,7 @@ PACKAGES = [
     Package('starship', 'starship', 'starship', Method.SYSTEM),
     Package('eza', 'eza', 'eza', Method.SYSTEM),
     Package('git-delta', 'delta', 'git-delta', Method.SYSTEM),
+    Package('ripgrep', 'rg', 'ripgrep', Method.SYSTEM),
     Package('mise.jdx.dev', 'mise', f'{SCRIPT_PATH}/../mise-install.sh', Method.SCRIPT),
 ]
 
