@@ -1,24 +1,27 @@
 show-fixes = true
 select = [
-  "I",              # isort
-  "B",              # flake8-bugbear
-  "F",              # pyflakes
-  "G",              # flake8-logging-format
-  "FIX",            # flake8-fixme
-  "PIE",            # flake8-pie
-  "ICN",            # flake8-import-conventions
-  "FBT",            # flake8-boolean-trap
-  "FLY",            # flynt
-  "PERF",           # perflint
+  # All rules
+  "ASYNC",          # flake8-async
   "BLE",            # flake8-blind-except
-  "RUF",            # ruff
+  "FBT",            # flake8-boolean-trap
+  "B",              # flake8-bugbear
+  "C4",             # flake8-comprehensions
+  "FIX",            # flake8-fixme
+  "ICN",            # flake8-import-conventions
+  "G",              # flake8-logging-format
+  "PIE",            # flake8-pie
+  # "T20",          # flake-print, include in production code
   "RET",            # flake8-return
   "SIM",            # flake8-simplify
   "TCH",            # flake8-type-checking
-  "ASYNC",          # flake8-async
-  "C4",             # flake8-comprehensions
+  "FLY",            # flynt
+  "I",              # isort
   "C90",            # mccabe
-  # "T20",          # flake-print, include in production code
+  "PERF",           # perflint
+  "F",              # pyflakes
+  "RUF",            # ruff
+
+  # Specific rules
   "S1",             # flake8-bandit (1xx)
   "Q003",           # flake8-quotes (003)
   "W29", "W605",    # pycodestyle (29x, 605)
