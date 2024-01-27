@@ -26,6 +26,7 @@ select = [
   # Todo: FURB
 ]
 ignore = ["S101"]
+target-version = "py38"
 output-format = "grouped"
 
 [format]
