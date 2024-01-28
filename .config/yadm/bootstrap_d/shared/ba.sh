@@ -35,6 +35,10 @@ die() {
 }
 
 confirm() {
+	if [ "${BS_CONFIRM_ALL:-0}" -eq "1" ]; then
+		return 0
+	fi
+
 	message=$*
 
 	while true; do

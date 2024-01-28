@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 import sys
 import shlex
@@ -41,6 +42,9 @@ def get_confirm_locale() -> Tuple[re.Pattern[str], re.Pattern[str], str, str]:
 
 
 def confirm(text: str) -> bool:
+    if os.getenv('BS_CONFIRM_ALL', '0') == '1':
+        return True
+
     yespt, nopt, yesstr, nostr = get_confirm_locale()
     try:
         while True:

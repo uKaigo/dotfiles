@@ -8,6 +8,8 @@ import sys
 import subprocess
 from pathlib import Path
 
+CONFIRM_ALL = os.getenv('BS_CONFIRM_ALL', '0') in '1yYsS'
+
 
 def debug(*text: str, sep: str = ' ') -> None:
     print(f'\033[30m[bootstrap] {sep.join(text)}\033[m')
@@ -33,10 +35,13 @@ files = tuple(sorted(filter(file_filter, BOOTSTRAP_D.glob('*'))))
 debug(f'Running {len(files)} scripts...')
 
 
+env = os.environ
+env.update({'BS_CONFIRM_ALL': '1' if CONFIRM_ALL else '0'})
+
 for file in files:
     try:
         debug(f"Running '{file.name.partition('.')[0]}'...")
-        if subprocess.call(str(file)):
+        if subprocess.call(str(file), env=env):
             print(f"\nError: bootstrap '{file}' failed", file=sys.stderr)
             sys.exit(1)
     except KeyboardInterrupt:
