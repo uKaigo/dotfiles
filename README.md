@@ -19,7 +19,7 @@ Currently, the bootstrap program:
 
 All of the steps are optional and you WILL be asked for input.
 
-If you to say yes to all questions, set the `BS_CONFIRM_ALL` environment variable.
+If you wish to say yes to all questions, set the `BS_CONFIRM_ALL` environment variable.
 
 Example:
 ```sh
