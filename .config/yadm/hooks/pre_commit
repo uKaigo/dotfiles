@@ -1,0 +1,59 @@
+#!/bin/bash
+# Preventing adding ignored files listed in the global gitignore.
+# It looks for the file (in this order):
+#     $XDG_CONFIG_HOME/yadm/ignore
+#     $XDG_CONFIG_HOME/git/ignore
+#     $HOME/.gitignore
+# If $XDG_CONFIG_HOME is not defined, it will default to $HOME/.config
+#
+# This hook will default to allowing anything.
+
+set -euo pipefail
+IFS=$'\n\t'
+
+ignore_file="/dev/null"
+
+if [ -f "$HOME/.gitignore" ]; then
+	ignore_file="$HOME/.gitignore"
+fi
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/git/ignore" ]; then
+	ignore_file="${XDG_CONFIG_HOME:-$HOME/.config}/git/ignore"
+fi
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/yadm/ignore" ]; then
+	ignore_file="${XDG_CONFIG_HOME:-$HOME/.config}/yadm/ignore"
+fi
+
+IGNORED=$(grep -o '^[^#]*' <"$ignore_file")
+
+if [ -z "$IGNORED" ]; then
+	exit 0
+fi
+
+if yadm rev-parse --verify HEAD >/dev/null 2>&1; then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(yadm hash-object -t tree /dev/null)
+fi
+
+# Redirect to stderr
+exec 1>&2
+
+added_files=$(yadm diff --cached --name-only --diff-filter=A "$against")
+
+should_abort=0
+
+for file in $IGNORED; do
+	if echo "${added_files[@]}" | grep -qw "$file"; then
+		echo "'$file' staged but is explictly ignored by '$ignore_file'."
+		should_abort=1
+	fi
+done
+
+if [ $should_abort -eq 1 ]; then
+	echo "Aborting..."
+fi
+
+exit $should_abort
