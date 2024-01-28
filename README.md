@@ -1,10 +1,20 @@
 dotfiles
 ========
 
-My linux dotfiles repository.
+These are my opinionated dotfiles setup.
+
+Uses [yadm](https://yadm.io) as a dotfiles manager.
 
 Installation
 ------------
 
-These are configurations made by me, for me. They may not fit your needs or work at all.
-But, if you want to use them anyway, you can run the [install script](https://raw.githubusercontent.com/uKaigo/dotfiles/main/assets/install.sh) (SH) or just clone the repo and put the files in your `$HOME` folder.
+Since this is made for my needs, it may or may not work on your setup.
+But if you really want to use it, you can just `yadm clone` this repo, and
+run the `yadm bootstrap` program to finish the setup.
+
+Currently, the bootstrap program:
+
+1. Installs NvChad.
+2. Installs some [useful packages](https://github.com/uKaigo/dotfiles/blob/main/.config/yadm/bootstrap_d/02-install-others.py#L87).
+
+All of the steps are optional and you WILL be asked for input.
