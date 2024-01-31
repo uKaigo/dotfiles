@@ -86,6 +86,7 @@ SCRIPT_PATH = path.dirname(path.realpath(__file__))
 
 PACKAGES = [
     Package('starship', 'starship', 'starship', Method.SYSTEM),
+    Package('bat', 'bat', 'bat', Method.SYSTEM),
     Package('eza', 'eza', 'eza', Method.SYSTEM),
     Package('git-delta', 'delta', 'git-delta', Method.SYSTEM),
     Package('ripgrep', 'rg', 'ripgrep', Method.SYSTEM),
