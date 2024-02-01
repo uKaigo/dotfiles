@@ -93,6 +93,11 @@ local P = {
     opts = require "custom.configs.nvim-tree",
   },
 
+  {
+    "NvChad/nvim-colorizer.lua",
+    opts = require "custom.configs.colorizer",
+  },
+
   -- {
   --   "rgroli/other.nvim",
   --   cmd = { "Other", "OtherSplit", "OtherVSplit" },
