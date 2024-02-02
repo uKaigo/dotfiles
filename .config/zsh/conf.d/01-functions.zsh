@@ -7,7 +7,7 @@ _check_updated() {
   loc=$(git -C $plugin rev-parse @)
   rmt=$(git -C $plugin rev-parse @{u})
 
-  [[ $loc = $rem ]] && return 0
+  [[ $loc = $rmt ]] && return 0
   return 1
 }
 
