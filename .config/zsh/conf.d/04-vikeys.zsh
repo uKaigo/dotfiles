@@ -1,4 +1,4 @@
-# Set VI mode 
+# Set VI mode
 bindkey -v
 KEYTIMEOUT=1
 
@@ -8,7 +8,7 @@ function zle-keymap-select {
     echo -ne '\e[1 q'
   elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
     echo -ne '\e[5 q'
-  fi 
+  fi
 }
 zle -N zle-keymap-select
 

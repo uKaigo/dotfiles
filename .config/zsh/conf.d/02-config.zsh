@@ -31,9 +31,4 @@ TIMEFMT=$'\nreal   %E\nuser   %U\nsys    %S\ncpu    %P'
 export PS4='+\033[1;33m(${BASH_SOURCE}:${LINENO})\033[m: ${FUNCNAME[0]:+\033[1;32m${FUNCNAME[0]}()\033[m: }'
 export PROMPT4='+%F{yellow}%B(%x:%I)%b%f: ' # Not equivalent to Bash's, but similar
 
-NVM_LAZY_LOAD=true
-if is_termux; then
-  ZSH_NVM_NO_LOAD=true
-fi
-
 YSU_MESSAGE_POSITION="after"

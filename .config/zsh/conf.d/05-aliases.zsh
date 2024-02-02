@@ -6,7 +6,7 @@ alias grep="grep --color"
 
 alias diff="diff --color"
 
-if command -v bat > /dev/null; then
+if command -v bat >/dev/null; then
   alias cat="bat -pp"
 fi
 

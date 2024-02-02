@@ -12,4 +12,4 @@ load_plugin "zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighti
 load_plugin "ohmyzsh/ohmyzsh" "lib/vcs_info.zsh"
 
 # Use VIM keybindings (ohmyzsh/key-bindings overwrites it)
-bindkey -v 
+bindkey -v
