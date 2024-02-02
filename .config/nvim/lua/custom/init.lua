@@ -7,5 +7,6 @@ opt.scrolloff = 4
 opt.sidescrolloff = 4
 opt.colorcolumn = "80"
 opt.shell = "/bin/fish"
+vim.g.copilot_no_tab_map = true
 
 require "custom.autocmds"

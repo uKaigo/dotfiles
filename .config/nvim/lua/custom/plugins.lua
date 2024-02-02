@@ -48,7 +48,7 @@ local P = {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft = { "python", "lua", "bash", "sh" },
+    ft = { "python", "lua", "bash", "zsh", "sh" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -96,6 +96,12 @@ local P = {
   {
     "NvChad/nvim-colorizer.lua",
     opts = require "custom.configs.colorizer",
+  },
+
+  {
+    "github/copilot.vim",
+    event = { "InsertEnter" },
+    cmd = { "Copilot" },
   },
 
   -- {
