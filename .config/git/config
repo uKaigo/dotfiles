@@ -1,6 +1,3 @@
-[user]
-  name = Leonardo
-  email = 37600692+uKaigo@users.noreply.github.com
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -24,7 +21,7 @@
   # https://matthewjberger.xyz/github/Nuking-Your-Git-Repo/
   nuke = "!sh -c \"git checkout $1 && git stash -u && git fetch --all && git reset --hard origin/$1  && git clean -df && git submodule update --init --recursive\" -"
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.config/git/ignore
   pager = delta
   autocrlf = input
 [interactive]
@@ -38,4 +35,5 @@
   colorMoved = default
 [init]
   defaultBranch = main
-
+[include]
+  path = "config.local"
