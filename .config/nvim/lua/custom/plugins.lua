@@ -100,23 +100,8 @@ local P = {
 
   {
     "github/copilot.vim",
-    event = { "InsertEnter" },
+    keys = { "<C-j>", "<M-Bslash>" },
     cmd = { "Copilot" },
   },
-
-  -- {
-  --   "rgroli/other.nvim",
-  --   cmd = { "Other", "OtherSplit", "OtherVSplit" },
-  --   keys = {
-  --     { "<leader>of", "<cmd> Other <CR>", desc = "Open Other file" },
-  --     { "<leader>os", "<cmd> OtherSplit <CR>", desc = "Open Other file in horizontal split" },
-  --     { "<leader>ov", "<cmd> OtherVSplit <CR>", desc = "Open Other file in vertical split" },
-  --   },
-  -- },
-
-  -- {
-  --   "christoomey/vim-tmux-navigator",
-  --   lazy = false,
-  -- },
 }
 return P
