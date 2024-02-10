@@ -5,16 +5,18 @@ IFS=$'\n\t'
 
 # shellcheck disable=SC2046 # Intended splitting
 # https://stackoverflow.com/a/226724https://stackoverflow.com/a/226724
-set -- $(locale LC_MESSAGES)
+set -- $(locale LC_MESSAGES 2>/dev/null)
 
+set +u
 YESEXPR="$1"
 NOEXPR="$2"
 YESWORD="$3"
 NOWORD="$4"
-if [ -z "$YESWORD" ]; then
+if [ -z "$NOWORD" ]; then
 	YESWORD="yes"
 	NOWORD="no"
 fi
+set -u
 
 YELLOW='\033[33m'
 YELLOW_B='\033[33;1m'

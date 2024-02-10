@@ -8,7 +8,7 @@ import subprocess
 from typing import Tuple, Union
 from functools import lru_cache
 from contextlib import suppress as supress_exc
-from subprocess import PIPE, Popen, CalledProcessError
+from subprocess import PIPE, DEVNULL, Popen, CalledProcessError
 
 YELLOW = '\033[33m'
 YELLOW_B = '\033[33;1m'
@@ -27,7 +27,7 @@ def get_confirm_locale() -> Tuple[re.Pattern[str], re.Pattern[str], str, str]:
     nostr = 'no'
 
     with supress_exc(FileNotFoundError, CalledProcessError, ValueError):
-        output = subprocess.check_output(['locale', 'LC_MESSAGES'])
+        output = subprocess.check_output(['locale', 'LC_MESSAGES'], stderr=DEVNULL)
 
         data = output.decode().splitlines()
         if len(data) <= 4:
