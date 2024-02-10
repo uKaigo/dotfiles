@@ -1,6 +1,6 @@
 # Loads /etc/environment. Should only be run by wsl, since it does not do it automatically.
-set --local ENVS_SET (cat /etc/environment | grep -o '^[^#]*')
+set --local ENVS_SET (grep -o '^[^#]*' </etc/environment)
 
-for env_dec in $ENVS_SET
-  set -gx (string split '=' $env_dec)
+for env_declaration in $ENVS_SET
+  set -gx (string split -m 1 '=' $env_declaration)
 end
