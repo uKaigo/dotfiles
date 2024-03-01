@@ -48,7 +48,7 @@ local P = {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft = { "python", "lua", "bash", "zsh", "sh" },
+    ft = { "lua", "bash", "zsh", "sh" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -77,13 +77,13 @@ local P = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "ruff-lsp",
+        "shfmt",
         "stylua",
         "pyright",
-        "ruff",
-        "shfmt",
-        "debugpy",
-        "rust-analyzer",
         "shellcheck",
+        "rust-analyzer",
+        "bash-language-server",
       },
     },
   },
