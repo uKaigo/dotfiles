@@ -42,13 +42,14 @@ local P = {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "plugins.configs.lspconfig"
+      -- require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end,
   },
   {
     "nvimtools/none-ls.nvim",
     ft = { "lua", "bash", "zsh", "sh" },
+    dependencies = { "neovim/nvim-lspconfig" },
     opts = function()
       return require "custom.configs.null-ls"
     end,
