@@ -32,7 +32,6 @@ end
 lspconfig.pyright.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "python" },
   settings = {
     pyright = {
       disableOrganizeImports = true,
@@ -42,12 +41,10 @@ lspconfig.pyright.setup {
 lspconfig.ruff_lsp.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "python" },
 }
 lspconfig.bashls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
-  filetypes = { "bash", "sh" },
 }
 
 return M
