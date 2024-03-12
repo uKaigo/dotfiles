@@ -46,5 +46,21 @@ lspconfig.bashls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+lspconfig.emmet_language_server.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+lspconfig.html.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+lspconfig.cssls.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+lspconfig.eslint.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
 
 return M
