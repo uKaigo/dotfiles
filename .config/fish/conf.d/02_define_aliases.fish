@@ -1,6 +1,6 @@
 abbr docker 'sudo docker'
 abbr rm 'rm -i'
-abbr nvsu 'sudo env "HOME=$HOME" nvim'
+abbr nvsu 'sudoedit'
 abbr cat 'bat -pp'
 abbr ls 'exa -a --icons'
-abbr exa 'exa --icons' # Abbreviations are not recursive.
+abbr exa 'exa --icons'
