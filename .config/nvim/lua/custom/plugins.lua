@@ -83,7 +83,6 @@ local P = {
         "stylua",
         "pyright",
         "shellcheck",
-        "emmet-language-server",
         "rust-analyzer",
         "bash-language-server",
         "lua-language-server",

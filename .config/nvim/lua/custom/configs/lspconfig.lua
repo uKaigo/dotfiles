@@ -51,25 +51,4 @@ lspconfig.bashls.setup {
   capabilities = M.capabilities,
 }
 
--- mason: emmet-language-server
-lspconfig.emmet_language_server.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-}
--- npm: vscode-langservers-extracted
-lspconfig.html.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-}
--- npm: vscode-langservers-extracted
-lspconfig.cssls.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-}
--- npm: vscode-langservers-extracted
-lspconfig.eslint.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-}
-
 return M
