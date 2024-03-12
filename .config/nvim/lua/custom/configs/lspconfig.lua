@@ -29,6 +29,7 @@ M.on_attach = function(client, bufnr)
   end
 end
 
+-- mason: pyright
 lspconfig.pyright.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
@@ -38,26 +39,34 @@ lspconfig.pyright.setup {
     },
   },
 }
+-- mason: ruff-lsp
 lspconfig.ruff_lsp.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+
+-- mason: bash-language-server & shfmt
 lspconfig.bashls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+
+-- mason: emmet-language-server
 lspconfig.emmet_language_server.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+-- npm: vscode-langservers-extracted
 lspconfig.html.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+-- npm: vscode-langservers-extracted
 lspconfig.cssls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+-- npm: vscode-langservers-extracted
 lspconfig.eslint.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
