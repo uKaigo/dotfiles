@@ -11,11 +11,17 @@ vim.api.nvim_create_autocmd(
   { command = [[if &nu | set nornu | endif]], group = NumberToggle }
 )
 
-vim.api.nvim_create_autocmd(
-  { "VimEnter" },
-  { command = 'call jobstart("tmux set status off")', once = true, group = VimLife }
-)
-vim.api.nvim_create_autocmd(
-  { "VimLeave" },
-  { command = 'silent exec "!tmux set status on"', once = true, group = VimLife }
-)
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  callback = function()
+    vim.fn.jobstart "tmux set status off"
+  end,
+  once = true,
+  group = VimLife,
+})
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+  callback = function()
+    vim.fn.jobstart("tmux set status on", { detach = true })
+  end,
+  once = true,
+  group = VimLife,
+})
