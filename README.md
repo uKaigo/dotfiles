@@ -14,7 +14,7 @@ run the `yadm bootstrap` program to finish the setup.
 
 Currently, the bootstrap program:
 
-1. Installs NvChad.
+1. Installs Tmux Plugin Manager.
 2. Installs some [useful packages](https://github.com/uKaigo/dotfiles/blob/main/.config/yadm/bootstrap_d/02-install-others.py#L87).
 
 All of the steps are optional and you WILL be asked for input.
