@@ -10,4 +10,7 @@ export ANDROID_HOME="$XDG_DATA_HOME/android"       # Should be used with an alia
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export MINECRAFT_HOME="$XDG_DATA_HOME/minecraft"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export __PROFILE_SOURCED="1"
