@@ -9,7 +9,7 @@ return {
     --  the list of additional_vim_regex_highlighting and disabled languages for indent.
     additional_vim_regex_highlighting = { 'ruby' },
   },
-  indent = { enable = true, disable = { 'ruby' } },
+  indent = { enable = true, disable = { 'ruby', 'python' } },
 }
 
 -- vim: ts=2 sts=2 sw=2 et

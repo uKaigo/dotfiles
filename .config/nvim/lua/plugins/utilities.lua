@@ -112,6 +112,12 @@ return {
     'b0o/SchemaStore.nvim',
     version = false,
   },
+
+  {
+    'Vimjas/vim-python-pep8-indent',
+    main = 'indent',
+    ft = { 'python' },
+  },
 }
 
 -- vim: ts=2 sts=2 sw=2 et
