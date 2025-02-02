@@ -37,3 +37,4 @@
   defaultBranch = main
 [include]
   path = "config.local"
+# vim: sw=2
