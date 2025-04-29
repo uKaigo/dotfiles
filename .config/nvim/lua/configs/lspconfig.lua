@@ -25,7 +25,7 @@ return function()
       map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
       -- Rename the variable under your cursor.
-      map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+      map('<leader>ra', vim.lsp.buf.rename, '[R]en[a]me')
 
       -- Execute a code action, usually your cursor needs to be on top of an error
       -- or a suggestion from your LSP for this to activate.
@@ -69,9 +69,9 @@ return function()
   local servers = {
     pyright = {},
 
-    ruff_lsp = {},
+    ruff = {},
 
-    tsserver = {},
+    ts_ls = {},
 
     eslint = {},
 
